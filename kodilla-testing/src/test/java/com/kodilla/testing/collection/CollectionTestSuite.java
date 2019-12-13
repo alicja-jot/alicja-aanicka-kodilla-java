@@ -53,5 +53,6 @@ public class CollectionTestSuite {
         // Then
         Assert.assertTrue(odd.size() == 2);
         Assert.assertEquals(odd, expected);
+
     }
 }
