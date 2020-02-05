@@ -1,18 +1,14 @@
 package com.kodilla.good.patterns.challenges;
 
-import java.util.stream.Collectors;
-
 public class Application {
     public static void main(String[] args) {
 
-        MovieStore movieStore = new MovieStore();
+        OrderRequestRetriever orderRequestRetriever = new OrderRequestRetriever();
+        OrderRequest orderRequest = orderRequestRetriever.retrieve();
 
-        String theResultStringOfMovies = movieStore.getMovies().values().stream()
-                .flatMap(movies -> movies.stream())
-                .collect(Collectors.joining("!"));
+        OrderProcessor orderProcessor = new OrderProcessor(new ProductOrderService(), new SmsSender(), new ProductOrderRepository());
+        OrderDto orderDto = orderProcessor.process(orderRequest);
 
-        System.out.println(theResultStringOfMovies);
-
-
+        System.out.println(orderDto.getUser().getName() + " " + orderDto.isOrdered());
     }
 }
