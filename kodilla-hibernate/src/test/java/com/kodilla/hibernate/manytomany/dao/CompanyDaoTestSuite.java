@@ -9,14 +9,20 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.List;
+
+import static org.junit.Assert.assertEquals;
+
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class CompanyDaoTestSuite {
     @Autowired
     CompanyDao companyDao;
+    @Autowired
+    EmployeeDao employeeDao;
 
     @Test
-    public void testSaveManyToMany(){
+    public void testSaveManyToMany() {
         //Given
         Employee johnSmith = new Employee("John", "Smith");
         Employee stephanieClarckson = new Employee("Stephanie", "Clarckson");
@@ -59,5 +65,57 @@ public class CompanyDaoTestSuite {
         } catch (Exception e) {
             //do nothing
         }
+    }
+
+    @Test
+    public void testRetrieveCompanyByThreeSigns() {
+        // Given
+        String threeLetters = "COM";
+
+        Company company1 = companyDao.save(new Company("COMARCH"));
+        Company company2 = companyDao.save(new Company("ASSECO"));
+        Company company3 = companyDao.save(new Company("COMBIT"));
+        Company company4 = companyDao.save(new Company("COMCAT"));
+        Company company5 = companyDao.save(new Company("CatCOM"));
+
+        // When
+        List<Company> companies = companyDao.retrieveCompanyByThreeSigns(threeLetters);
+
+        // Then
+        assertEquals(3, companies.size());
+
+        // CleanUp
+        companyDao.deleteById(company1.getId());
+        companyDao.deleteById(company2.getId());
+        companyDao.deleteById(company3.getId());
+        companyDao.deleteById(company4.getId());
+        companyDao.deleteById(company5.getId());
+    }
+
+    @Test
+    public void testRetrieveLastnamedEmployee(){
+        // Given
+        Employee employee1 = new Employee("Jan", "Kowalski");
+        Employee employee2 = new Employee("Jan", "Nowak");
+        Employee employee3 = new Employee("Rafał", "Koń");
+        Employee employee4 = new Employee("Ignacy", "Kowal");
+        Employee employee5 = new Employee("Pawel", "Kowalski");
+
+        int employeeId1 =  employeeDao.save(employee1).getId();
+        int employeeId2 =  employeeDao.save(employee2).getId();
+        int employeeId3 =  employeeDao.save(employee3).getId();
+        int employeeId4 =  employeeDao.save(employee4).getId();
+        int employeeId5 =  employeeDao.save(employee5).getId();
+
+        // When
+        List<Employee> resultEmployees = employeeDao.retrieveLastnamedEmployee("Kowalski");
+        // Then
+        Assert.assertEquals(2, resultEmployees.size());
+        //CleanUp
+        employeeDao.deleteById(employeeId1);
+        employeeDao.deleteById(employeeId2);
+        employeeDao.deleteById(employeeId3);
+        employeeDao.deleteById(employeeId4);
+        employeeDao.deleteById(employeeId5);
     }
 }
