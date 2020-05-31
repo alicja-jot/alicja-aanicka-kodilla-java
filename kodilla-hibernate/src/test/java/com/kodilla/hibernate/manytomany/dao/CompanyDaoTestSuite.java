@@ -3,6 +3,7 @@ package com.kodilla.hibernate.manytomany.dao;
 import com.kodilla.hibernate.manytomany.Company;
 import com.kodilla.hibernate.manytomany.Employee;
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +21,12 @@ public class CompanyDaoTestSuite {
     CompanyDao companyDao;
     @Autowired
     EmployeeDao employeeDao;
+
+    @Before
+    public void init() {
+        companyDao.deleteAll();
+        employeeDao.deleteAll();
+    }
 
     @Test
     public void testSaveManyToMany() {
@@ -93,7 +100,7 @@ public class CompanyDaoTestSuite {
     }
 
     @Test
-    public void testRetrieveLastnamedEmployee(){
+    public void testRetrieveLastnamedEmployee() {
         // Given
         Employee employee1 = new Employee("Jan", "Kowalski");
         Employee employee2 = new Employee("Jan", "Nowak");
@@ -101,11 +108,11 @@ public class CompanyDaoTestSuite {
         Employee employee4 = new Employee("Ignacy", "Kowal");
         Employee employee5 = new Employee("Pawel", "Kowalski");
 
-        int employeeId1 =  employeeDao.save(employee1).getId();
-        int employeeId2 =  employeeDao.save(employee2).getId();
-        int employeeId3 =  employeeDao.save(employee3).getId();
-        int employeeId4 =  employeeDao.save(employee4).getId();
-        int employeeId5 =  employeeDao.save(employee5).getId();
+        int employeeId1 = employeeDao.save(employee1).getId();
+        int employeeId2 = employeeDao.save(employee2).getId();
+        int employeeId3 = employeeDao.save(employee3).getId();
+        int employeeId4 = employeeDao.save(employee4).getId();
+        int employeeId5 = employeeDao.save(employee5).getId();
 
         // When
         List<Employee> resultEmployees = employeeDao.retrieveLastnamedEmployee("Kowalski");
