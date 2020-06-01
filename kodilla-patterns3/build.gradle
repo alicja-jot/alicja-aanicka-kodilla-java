@@ -20,6 +20,7 @@ dependencies {
         exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
     }
     testImplementation('junit:junit:4.13')
+    compile('org.springframework.boot:spring-boot-starter-aop')
 }
 
 test {
