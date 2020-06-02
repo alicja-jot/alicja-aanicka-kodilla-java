@@ -106,7 +106,7 @@ public class BoardTestSuite {
         // Given
         Board board = prepareTestData();
 
-        LocalDate now = LocalDate.parse("2019-12-23");
+        LocalDate now = LocalDate.now();
 
         // When
         List<Integer> days = board.getTaskLists()
