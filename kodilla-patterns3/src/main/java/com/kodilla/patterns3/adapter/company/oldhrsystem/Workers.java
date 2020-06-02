@@ -1,4 +1,4 @@
-package com.kodilla.patterns3.oldhrsystem;
+package com.kodilla.patterns3.adapter.company.oldhrsystem;
 
 public class Workers {
 

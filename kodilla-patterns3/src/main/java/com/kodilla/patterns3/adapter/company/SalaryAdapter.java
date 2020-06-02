@@ -1,7 +1,7 @@
 package com.kodilla.patterns3.adapter.company;
 
-import com.kodilla.patterns3.newhrsystem.Employee;
-import com.kodilla.patterns3.oldhrsystem.SalaryCalculator;
+import com.kodilla.patterns3.adapter.company.newhrsystem.Employee;
+import com.kodilla.patterns3.adapter.company.oldhrsystem.SalaryCalculator;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;

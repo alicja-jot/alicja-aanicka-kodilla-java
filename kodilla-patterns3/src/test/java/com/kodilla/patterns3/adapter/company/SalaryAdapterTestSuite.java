@@ -1,6 +1,6 @@
 package com.kodilla.patterns3.adapter.company;
 
-import com.kodilla.patterns3.oldhrsystem.Workers;
+import com.kodilla.patterns3.adapter.company.oldhrsystem.Workers;
 import org.junit.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

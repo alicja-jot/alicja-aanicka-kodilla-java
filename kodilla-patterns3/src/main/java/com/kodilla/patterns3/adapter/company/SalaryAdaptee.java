@@ -1,8 +1,8 @@
 package com.kodilla.patterns3.adapter.company;
 
-import com.kodilla.patterns3.newhrsystem.CompanySalaryProcessor;
-import com.kodilla.patterns3.newhrsystem.Employee;
-import com.kodilla.patterns3.newhrsystem.SalaryProcessor;
+import com.kodilla.patterns3.adapter.company.newhrsystem.CompanySalaryProcessor;
+import com.kodilla.patterns3.adapter.company.newhrsystem.Employee;
+import com.kodilla.patterns3.adapter.company.newhrsystem.SalaryProcessor;
 
 import java.math.BigDecimal;
 import java.util.List;

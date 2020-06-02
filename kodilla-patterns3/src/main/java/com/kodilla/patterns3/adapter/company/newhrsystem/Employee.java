@@ -1,4 +1,4 @@
-package com.kodilla.patterns3.newhrsystem;
+package com.kodilla.patterns3.adapter.company.newhrsystem;
 
 import java.math.BigDecimal;
 
