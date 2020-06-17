@@ -10,4 +10,5 @@ include 'kodilla-patterns'
 include 'kodilla-patterns3'
 include 'kodilla-spring-intro'
 include 'kodilla-spring-web'
+include 'kodilla-testing2'
 
